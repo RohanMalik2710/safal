@@ -29,3 +29,12 @@ body {
 .nav-link:hover {
   @apply text-blue-400; /* Example: Change text color on hover */
 }
+
+.signup-link {
+  color: #3182ce; /* Set your desired highlighted color */
+  text-decoration: underline; /* You can customize the text decoration as needed */
+}
+
+.signup-link:hover {
+  color: #2c5282; /* Set your desired color for the hover state */
+}

@@ -1,5 +1,6 @@
-// src/components/Login.js
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Signup from './Signup';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -57,6 +58,9 @@ const Login = () => {
             </button>
           </div>
         </form>
+        <p>
+        Don't have an account? <Link to="/signup" className="signup-link">Create a new account</Link>
+        </p>
       </div>
     </div>
   );
