@@ -1,0 +1,49 @@
+/* styles/Slider.css */
+
+/* Add styles for the slider container */
+.slider-container {
+    width: 80%; /* Adjust the width of the slider container */
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  
+  /* Add styles for the slider image */
+  .slider-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  /* Styling for custom arrow images */
+  .slick-prev,
+  .slick-next {
+    font-size: 0; /* Hide the default arrow text */
+    width: 40px; /* Set the width of the arrow image */
+    height: 40px; /* Set the height of the arrow image */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: brown; /* Set background color to transparent */
+  }
+  
+  .slick-prev {
+    background-image: url('../assets/left-arrow.jpg'); /* Replace with the path to your left arrow image */
+  }
+  
+  .slick-next {
+    background-image: url('../assets/right-arrow.jpg'); /* Replace with the path to your right arrow image */
+  }
+  
+  /* Styling for slider dots (optional) */
+  .slick-dots {
+    bottom: -30px; /* Adjust the position of the dots */
+  }
+  
+  .slick-dots li button {
+    font-size: 14px;
+    color: #3182ce; /* Set your desired dot color */
+  }
+  
+  .slick-dots li.slick-active button {
+    color: #2c5z282; /* Set your desired dot color for the active state */
+  }
+  

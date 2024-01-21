@@ -1,0 +1,16 @@
+/* styles/Labour.css */
+
+/* Add styles for job postings */
+.job-posting {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .apply-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+  

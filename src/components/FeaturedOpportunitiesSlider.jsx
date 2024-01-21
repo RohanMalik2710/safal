@@ -1,31 +1,51 @@
+// FeaturedOpportunitiesSlider.jsx
 import React from 'react';
 import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css'; // Import the main Slick Carousel styles
+import 'slick-carousel/slick/slick-theme.css'; // Import the Slick Carousel theme styles
+import '../styles/Slider.css';
 
 const FeaturedOpportunitiesSlider = () => {
   const settings = {
-    dots: true,
+    dots: true, // Hide the dots
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000, // Transition every 5 seconds
+    arrows: true, // Enable navigation arrows
   };
 
-  // Dummy data for slider (replace this with actual job opportunities data)
   const opportunities = [
-    { id: 1, title: 'Job Opportunity 1', image: 'src/assets/slider1.png' },
-    { id: 2, title: 'Job Opportunity 2', image: 'src/assets/slider2.png' },
-    { id: 3, title: 'Job Opportunity 3', image: 'src/assets/slider3.png' },
+    { id: 1, title: 'Job Opportunity 1', image: 'src/assets/slider1.jpg' },
+    { id: 2, title: 'Job Opportunity 2', image: 'src/assets/slider2.jpg' },
+    { id: 3, title: 'Job Opportunity 3', image: 'src/assets/slider3.jpg' },
+    { id: 4, title: 'Job Opportunity 4', image: 'src/assets/slider4.jpg' },
   ];
 
+  const containerStyle = {
+    textAlign: 'center',
+  };
+
+  const imageSizeStyle = {
+    width: '500px',
+    height: '400px',
+    margin: '0 auto',
+    display: 'block',
+  };
+
   return (
-    <Slider {...settings}>
-      {opportunities.map(opportunity => (
-        <div key={opportunity.id}>
-          <img src={opportunity.image} alt={opportunity.title} />
-          <h3>{opportunity.title}</h3>
-        </div>
-      ))}
-    </Slider>
+    <div style={containerStyle}>
+      <Slider {...settings} className="custom-slider">
+        {opportunities.map((opportunity) => (
+          <div key={opportunity.id} style={{ textAlign: 'center' }}>
+            <img src={opportunity.image} alt={opportunity.title} style={imageSizeStyle} />
+            <h3 style={{ textAlign: 'center' }}>{opportunity.title}</h3>
+          </div>
+        ))}
+      </Slider>
+    </div>
   );
 };
 
