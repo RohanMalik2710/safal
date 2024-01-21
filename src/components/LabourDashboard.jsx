@@ -1,6 +1,6 @@
 // LabourDashboard.jsx
 import React, { useState } from 'react';
-import FeaturedOpportunitiesSlider from './FeaturedOpportunitiesSlider';
+import LabourSlider from './LabourSlider';
 import '../styles/Labour.css';
 
 const LabourDashboard = () => {
@@ -24,7 +24,7 @@ const LabourDashboard = () => {
     <div className="labour-container">
       <h1 className="labour-header">Labour Dashboard</h1>
       <p className="labour-description">Explore featured job opportunities:</p>
-      <FeaturedOpportunitiesSlider />
+      <LabourSlider />
 
       <div>
         <h2>Job Postings</h2>
