@@ -15,10 +15,10 @@ const HomeSlider = () => {
   };
 
   const opportunities = [
-    { id: 1, title: 'Job Opportunity 1', image: 'src/assets/slider1.png' },
-    { id: 2, title: 'Job Opportunity 2', image: 'src/assets/slider2.png' },
-    { id: 3, title: 'Job Opportunity 3', image: 'src/assets/slider3.png' },
-    { id: 4, title: 'Job Opportunity 4', image: 'src/assets/slider4.png' },
+    { id: 1, title: 'Job Opportunity 1', image: 'src/assets/slider1.jpg' },
+    { id: 2, title: 'Job Opportunity 2', image: 'src/assets/slider2.jpg' },
+    { id: 3, title: 'Job Opportunity 3', image: 'src/assets/slider3.jpg' },
+    { id: 4, title: 'Job Opportunity 4', image: 'src/assets/slider4.jpg' },
   ];
 
   const containerStyle = {

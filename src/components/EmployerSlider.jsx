@@ -4,12 +4,12 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const LabourSlider = () => {
+const HomeSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 1,
     slidesToScroll: 1,
     
   };
@@ -30,8 +30,8 @@ const LabourSlider = () => {
   };
 
   const imageSizeStyle = {
-    width: '500px',
-    height: '300px',
+    width: '80%',
+    height: 'auto',
     margin: '0 auto',
     display: 'block',
   };
@@ -50,4 +50,4 @@ const LabourSlider = () => {
   );
 };
 
-export default LabourSlider;
+export default HomeSlider;
