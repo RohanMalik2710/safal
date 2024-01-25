@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-const FeaturedOpportunitiesSlider = () => {
+const LabourSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
@@ -64,4 +64,4 @@ const FeaturedOpportunitiesSlider = () => {
   );
 };
 
-export default FeaturedOpportunitiesSlider;
+export default LabourSlider;
