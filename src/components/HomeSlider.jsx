@@ -22,6 +22,7 @@ const HomeSlider = () => {
     { id: 4, title: 'Job Opportunity 4', description: 'Description 4', image: 'src/assets/slider4.jpg' },
     // Add more opportunities as needed
   ];
+
   const containerStyle = {
     textAlign: 'center',
   };
@@ -48,6 +49,7 @@ const HomeSlider = () => {
   return (
     <div style={containerStyle}>
       <Slider {...settings} className="custom-slider">
+        {allOpportunities.map(opportunity => (
           <div key={opportunity.id} style={{ textAlign: 'center' }}>
             <div style={contentContainerStyle}>
               <img src={opportunity.image} alt={opportunity.title} style={imageSizeStyle} />
