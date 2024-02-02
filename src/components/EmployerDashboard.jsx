@@ -85,7 +85,7 @@ const EmployerDashboard = () => {
         <Link to="/general labour" className="group">
           <SkillBox
             skill="General Labour"
-            imageSrc="src/assets/general labour.jpg" 
+            imageSrc="src/assets/general-labour.jpg" 
             boxColor="bg-red-100"
             boxMargin="mx-3 my-3"
           />
