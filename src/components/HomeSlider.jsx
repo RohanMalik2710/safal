@@ -61,7 +61,11 @@ const HomeSlider = () => {
   return (
     <div style={containerStyle}>
       <Slider {...settings} className="custom-slider">
+<<<<<<< HEAD
         {allOpportunities.map((opportunity) => (
+=======
+        {allOpportunities.map(opportunity => (
+>>>>>>> 167f91bcf1f1fed2121d1a93e32fa1aba87e178d
           <div key={opportunity.id} style={{ textAlign: 'center' }}>
             <div style={contentContainerStyle}>
               <img src={opportunity.image} alt={opportunity.title} style={imageSizeStyle} />
