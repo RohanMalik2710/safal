@@ -6,6 +6,11 @@ import LabourDashboard from './components/LabourDashboard';
 import EmployerDashboard from './components/EmployerDashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
+
+import CarpentryJobPost from './components/CarpentryJobPost';
+import CarpentryLaborers from './components/CarpentryLaborers';
+import PlumbingJobPost from './components/PlumbingJobPost';
+import PlumbingLaborers from './components/PlumbingLaborers';
 import DarkModeToggle from './components/DarkModeToggle'; // Import the DarkModeToggle component
 import './index.css';
 
@@ -45,6 +50,13 @@ const App = () => {
         <Route path="/employers" element={<EmployerDashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
+        
+        <Route path="/" exact component={EmployerDashboard} />
+        <Route path="/carpentry" element={<CarpentryJobPost/>} />
+        <Route path="/carpentry/laborers" element={<CarpentryLaborers/>} />
+        <Route path="/plumbing" element={<PlumbingJobPost/>} />
+        <Route path="/plumbing/laborers" element={<PlumbingLaborers/>} />
       </Routes>
     </Router>
   );
