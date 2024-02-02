@@ -1,8 +1,9 @@
-// FeaturedOpportunitiesSlider.jsx
+// HomeSlider.jsx
 import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import '../styles/Home.css';
 
 const HomeSlider = () => {
   const settings = {
@@ -22,6 +23,7 @@ const HomeSlider = () => {
     { id: 4, title: 'Job Opportunity 4', description: 'Description 4', image: 'src/assets/slider4.jpg' },
     // Add more opportunities as needed
   ];
+
   const containerStyle = {
     textAlign: 'center',
   };
@@ -29,29 +31,44 @@ const HomeSlider = () => {
   const contentContainerStyle = {
     display: 'flex',
     flexDirection: 'row',
-    border: '1px solid #4682b4', /* Blue border color */
     alignItems: 'center',
     justifyContent: 'center',
+    border: '2px solid #4682b4', /* Blue border color */
+    borderRadius: '10px',
+    padding: '20px',
+    margin: '10px',
+    backgroundColor: '#f0f9ff', /* Very light blue background */
+    boxShadow: '0 0 10px rgba(36, 139, 223, 0.3)', /* Blue theme shadow */
   };
 
   const titleStyle = {
-    margin: '10px 0', // Adjust the margin as needed
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    color: '#333',
   };
 
   const imageSizeStyle = {
     width: 'auto',
-    height: '500px',
+    height: '300px',
     margin: '10px',
     display: 'block',
   };
 
+  const infoStyle = {
+    padding: '100px'
+  }
+
   return (
     <div style={containerStyle}>
       <Slider {...settings} className="custom-slider">
+        {allOpportunities.map((opportunity) => (
           <div key={opportunity.id} style={{ textAlign: 'center' }}>
             <div style={contentContainerStyle}>
               <img src={opportunity.image} alt={opportunity.title} style={imageSizeStyle} />
-              <h3 style={titleStyle}>{opportunity.title}</h3>
+              <div style={infoStyle}>
+                <h3 style={titleStyle}>{opportunity.title}</h3>
+                <p>{opportunity.description}</p>
+              </div>
             </div>
           </div>
         ))}

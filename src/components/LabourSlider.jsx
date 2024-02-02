@@ -1,10 +1,10 @@
-// FeaturedOpportunitiesSlider.jsx
 import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import '../styles/Labour.css';
 
-const LabourSlider = () => {
+const LabourSlider = ({ onExploreClick }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -26,25 +26,37 @@ const LabourSlider = () => {
   const top5Opportunities = allOpportunities.slice(0, 5);
   const containerStyle = {
     textAlign: 'center',
+    margin: '-40px',
   };
 
   const contentContainerStyle = {
     display: 'flex',
     flexDirection: 'row',
-    border: '1px solid #4682b4', /* Blue border color */
+    border: '2px solid #4682b4', /* Blue border color */
+    margin: '10px',
+    padding: '20px',
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: '10px',
+    backgroundColor: '#f0f9ff', /* Very light blue background */
+    boxShadow: '0 0 10px rgba(36, 139, 223, 0.3)',
   };
 
   const titleStyle = {
-    margin: '10px 0', // Adjust the margin as needed
+    fontSize: '1.5rem',
+    fontWeight: 'bold',
+    color: '#333',
   };
 
   const imageSizeStyle = {
     width: 'auto',
-    height: '500px',
+    height: '300px',
     margin: '10px',
     display: 'block',
+  };
+
+  const infoStyle = {
+    padding: '100px',
   };
 
   return (
@@ -54,8 +66,16 @@ const LabourSlider = () => {
           <div key={opportunity.id} style={{ textAlign: 'center' }}>
             <div style={contentContainerStyle}>
               <img src={opportunity.image} alt={opportunity.title} style={imageSizeStyle} />
-              <h3 style={titleStyle}>{opportunity.title}</h3>
-              <p>{opportunity.description}</p>
+              <div style={infoStyle}>
+                <h3 style={titleStyle}>{opportunity.title}</h3>
+                <p>{opportunity.description}</p>
+                <button
+                  className="apply-button"
+                  onClick={() => onExploreClick(opportunity.id)}
+                >
+                  Explore
+                </button>
+              </div>
             </div>
           </div>
         ))}

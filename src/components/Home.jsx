@@ -1,13 +1,11 @@
 // Home.jsx
 import React from 'react';
 import HomeSlider from './HomeSlider';
+import '../styles/Home.css'
 
 const Home = () => {
   return (
-    <div>
-      <div style={{ textAlign: 'center' }}>
-        <h2>Featured Opportunities</h2>
-      </div>
+    <div className='home-container'>
       <HomeSlider />
       <h1>Welcome to Safal!</h1>
       <p>Empowering skilled and unskilled laborers with quality employment opportunities.</p>

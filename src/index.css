@@ -23,7 +23,7 @@ body {
 }
 
 .nav-link {
-  @apply text-white font-bold text-lg no-underline; /* Example: White text, bold font, and remove underline */
+  @apply text-white text-lg no-underline; /* Example: White text, bold font, and remove underline */
 }
 
 .nav-link:hover {

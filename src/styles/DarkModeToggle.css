@@ -1,0 +1,48 @@
+/* DarkModeToggle.css */
+.dark-mode-toggle {
+  position: relative;
+  width: 50px;
+  height: 25px;
+  border-radius: 15px;
+  background-color: #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slider {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 2.5px;
+  left: 2.5px;
+  transition: transform 0.3s;
+}
+
+.dark-mode-toggle.dark {
+  background-color: #333;
+}
+
+.dark-mode-toggle.dark .slider {
+  transform: translateX(25px);
+}
+
+:root {
+  --background-light: #ffffff;
+  --background-dark: #333333;
+  --text-light: #333333;
+  --text-dark: #ffffff;
+}
+
+body {
+  background-color: var(--background-light);
+  color: var(--text-light);
+}
+
+.dark-mode {
+  --background-light: #333333;
+  --background-dark: #ffffff;
+  --text-light: #ffffff;
+  --text-dark: #333333;
+}
