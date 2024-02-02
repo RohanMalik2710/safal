@@ -14,6 +14,8 @@ import PlumbingLaborers from './components/PlumbingLaborers';
 import DarkModeToggle from './components/DarkModeToggle'; // Import the DarkModeToggle component
 import './index.css';
 
+
+import companyLogo from './assets/images.png'; // Update the path
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
 
@@ -23,6 +25,11 @@ const App = () => {
 
   return (
     <Router>
+      <div className="header">
+        {/* Logo */}
+        <div className="logo-container">
+          <img src={companyLogo} alt="Company Logo" className="company-logo" />
+        </div>
       <nav className="navbar">
         <ul className="nav-list">
           <li className="nav-item">
@@ -42,7 +49,7 @@ const App = () => {
           </li>
         </ul>
       </nav>
-
+      </div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
