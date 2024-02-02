@@ -25,7 +25,7 @@ const EmployerDashboard = () => {
           <SkillBox
             skill="Carpentry"
             imageSrc="src/assets/carpentry.jpg" 
-            boxColor="bg-red-100"
+            boxColor="bg-blue-100"
               boxMargin="mx-3 my-3"
           />
         </Link>
@@ -33,7 +33,7 @@ const EmployerDashboard = () => {
           <SkillBox
             skill="Plumbing"
             imageSrc="src/assets/plumber.jpg" 
-            boxColor="bg-red-100"
+            boxColor="bg-blue-100"
               boxMargin="mx-3 my-3"
 
           />
@@ -42,7 +42,7 @@ const EmployerDashboard = () => {
           <SkillBox
             skill="Welding"
             imageSrc="src/assets/welding.jpg" 
-            boxColor="bg-red-100"
+            boxColor="bg-blue-100"
             boxMargin="mx-3 my-3"
 
           />
@@ -51,7 +51,7 @@ const EmployerDashboard = () => {
           <SkillBox
             skill="General Labour"
             imageSrc="src/assets/general-labour.jpg"
-            boxColor="bg-red-100"
+            boxColor="bg-blue-100"
               boxMargin="mx-3 my-3" 
           />
         </Link>
@@ -62,7 +62,7 @@ const EmployerDashboard = () => {
           <SkillBox
             skill="Cleaning"
             imageSrc="src/assets/carpentry.jpg" 
-            boxColor="bg-red-100"
+            boxColor="bg-blue-100"
               boxMargin="mx-3 my-3"
           />
         </Link>
@@ -70,7 +70,7 @@ const EmployerDashboard = () => {
           <SkillBox
             skill="Plumbing"
             imageSrc="src/assets/plumber.jpg" 
-            boxColor="bg-red-100"
+            boxColor="bg-blue-100"
               boxMargin="mx-3 my-3"
           />
         </Link>
@@ -78,7 +78,7 @@ const EmployerDashboard = () => {
           <SkillBox
             skill="Welding"
             imageSrc="src/assets/welding.jpg" 
-            boxColor="bg-red-100"
+            boxColor="bg-blue-100"
               boxMargin="mx-3 my-3"
           />
         </Link>
@@ -86,7 +86,7 @@ const EmployerDashboard = () => {
           <SkillBox
             skill="General Labour"
             imageSrc="src/assets/general-labour.jpg" 
-            boxColor="bg-red-100"
+            boxColor="bg-blue-100"
             boxMargin="mx-3 my-3"
           />
         </Link>
