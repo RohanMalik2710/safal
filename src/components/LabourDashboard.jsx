@@ -1,9 +1,13 @@
 //LabourDashboard.jsx
 import React, { useState, useRef, useEffect } from 'react';
+import { formatDistanceToNow } from 'date-fns';
 import LabourSlider from './LabourSlider';
 import DarkModeToggle from './DarkModeToggle';
 import '../styles/Labour.css';
-import '../styles/Form.css'; // Import Form.css for styling the form
+import '../styles/Form.css';
+
+import { collection, query, where, getDocs } from "firebase/firestore";
+import {db} from "../firebase.config"
 
 const LabourDashboard = () => {
 
@@ -13,12 +17,30 @@ const LabourDashboard = () => {
     setDarkMode(!darkMode);
   };
 
-  const [jobPostings, setJobPostings] = useState(Array.from({ length: 15 }, (_, i) => ({
-    id: i + 1,
-    title: `Job Posting ${i + 1}`,
-    company: `Company ${i + 1}`,
-    location: `City ${i + 1}`,
-  })));
+  const [jobPostings, setJobPostings] = useState([]);
+
+  const fetchJobs = async() => {
+    const tempJobs = []
+    const q = query(collection(db, "jobs"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      //console.log(doc.id, " => ", doc.data());
+      tempJobs.push({
+        ...doc.data(),
+        id: doc.id,
+        postedOn: doc.data().postedOn.toDate()
+      })
+    });
+    setJobPostings(tempJobs);
+  }
+
+  const timeAgo = (date) => {
+    return formatDistanceToNow(date, { addSuffix: true });
+  };
+
+  useEffect(() => {
+    fetchJobs()
+  },[])
 
   const [showApplyForm, setShowApplyForm] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
@@ -66,6 +88,7 @@ const LabourDashboard = () => {
             <h3>{post.title}</h3>
             <p>Company: {post.company}</p>
             <p>Location: {post.location}</p>
+            <p>Posted : {timeAgo(post.postedOn)}</p>
             <button
               className="apply-button"
               onClick={() => handleApply(post.id)}
