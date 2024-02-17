@@ -1,6 +1,6 @@
 // EmployerDashboard.jsx
-import React from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Routes, Route, useNavigate, Link } from 'react-router-dom';
 import EmployerSkillPage from './EmployerSkillPage';
 import '../styles/Employer.css';
 
@@ -20,7 +20,6 @@ const SkillBox = ({ skill, imageSrc, boxColor }) => {
     </div>
   );
 };
-
 const EmployerDashboard = () => {
   return (
     <div className="layout">
