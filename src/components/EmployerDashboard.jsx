@@ -1,9 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SkillBox = ({ skill, imageSrc, boxColor, boxMargin }) => {
+  const [hoverStyle, setHoverStyle] = useState({});
+
+  const handleHover = (e) => {
+    const { clientX, clientY } = e;
+    const box = e.currentTarget.getBoundingClientRect();
+    const offsetX = clientX - box.left - box.width / 2;
+    const offsetY = clientY - box.top - box.height / 2;
+
+    const rotateX = -offsetY / 15; // Adjust the rotation sensitivity
+    const rotateY = offsetX / 15;
+
+    setHoverStyle({
+      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`,
+    });
+  };
+
   return (
-    <div className={`rounded-lg overflow-hidden shadow-lg h-full ${boxColor} ${boxMargin}`}>
+    <div
+      className={`rounded-lg overflow-hidden shadow-lg h-full ${boxColor} ${boxMargin}`}
+      onMouseMove={handleHover}
+      onMouseLeave={() => setHoverStyle({})}
+      style={hoverStyle}
+    >
       <div className="text-center p-4">
         <h2 className="text-xl font-bold mb-2">{skill}</h2>
       </div>
@@ -11,7 +32,6 @@ const SkillBox = ({ skill, imageSrc, boxColor, boxMargin }) => {
     </div>
   );
 };
-
 const EmployerDashboard = () => {
   return (
     <div className="bg-gray-200">
