@@ -1,8 +1,12 @@
-import React from 'react';
+//LabourSlider.jsx
+import React,{useState,useEffect} from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import '../styles/Labour.css';
+
+import { collection, query, where, getDocs } from "firebase/firestore";
+import {db} from "../firebase.config"
 
 const LabourSlider = ({ onExploreClick }) => {
   const settings = {
@@ -15,15 +19,28 @@ const LabourSlider = ({ onExploreClick }) => {
     autoplaySpeed: 3000,
   };
 
-  const allOpportunities = [
-    { id: 1, title: 'Job Opportunity 1', description: 'Description 1', image: 'src/assets/slider1.jpg' },
-    { id: 2, title: 'Job Opportunity 2', description: 'Description 2', image: 'src/assets/slider2.jpg' },
-    { id: 3, title: 'Job Opportunity 3', description: 'Description 3', image: 'src/assets/slider3.jpg' },
-    { id: 4, title: 'Job Opportunity 4', description: 'Description 4', image: 'src/assets/slider4.jpg' },
-    // Add more opportunities as needed
-  ];
+  const [jobPostings, setJobPostings] = useState([]);
 
-  const top5Opportunities = allOpportunities.slice(0, 5);
+  const fetchJobs = async() => {
+    const tempJobs = []
+    const q = query(collection(db, "jobs"));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      //console.log(doc.id, " => ", doc.data());
+      tempJobs.push({
+        ...doc.data(),
+        id: doc.id,
+        postedOn: doc.data().postedOn.toDate()
+      })
+    });
+    setJobPostings(tempJobs);
+  }
+
+  useEffect(() => {
+    fetchJobs()
+  },[])
+
+  const top5opportunities = jobPostings.slice(0, 5);
   const containerStyle = {
     textAlign: 'center',
     margin: '-40px',
@@ -34,7 +51,6 @@ const LabourSlider = ({ onExploreClick }) => {
     flexDirection: 'row',
     border: '2px solid #4682b4', /* Blue border color */
     margin: '10px',
-    padding: '20px',
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: '10px',
@@ -48,27 +64,20 @@ const LabourSlider = ({ onExploreClick }) => {
     color: '#333',
   };
 
-  const imageSizeStyle = {
-    width: 'auto',
-    height: '300px',
-    margin: '10px',
-    display: 'block',
-  };
-
   const infoStyle = {
-    padding: '100px',
+    paddingTop: '32px',
+    paddingBottom: '15px',
   };
 
   return (
     <div style={containerStyle}>
       <Slider {...settings} className="custom-slider">
-        {top5Opportunities.map(opportunity => (
+        {top5opportunities.map(opportunity => (
           <div key={opportunity.id} style={{ textAlign: 'center' }}>
             <div style={contentContainerStyle}>
-              <img src={opportunity.image} alt={opportunity.title} style={imageSizeStyle} />
               <div style={infoStyle}>
                 <h3 style={titleStyle}>{opportunity.title}</h3>
-                <p>{opportunity.description}</p>
+                <p>{opportunity.company}</p>
                 <button
                   className="apply-button"
                   onClick={() => onExploreClick(opportunity.id)}

@@ -5,47 +5,38 @@
 
 
 .header {
-  
+  background-color : #214783;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: px 20px; /* Decrease padding horizontally */
-  margin-bottom: -50px;
-  margin-top: -30px;
+  padding-left: -50px;
+  margin-top: -20px;
 }
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 .company-logo{
-  flex: 0 0 20%; /* Set the logo container width to 20% of the available space */
-  margin-left: 20px; /* Adjust margin for spacing */
-  clip-path: inset(10% 0 10% 0);
-}
-.company-logo img {
-  width: 100%; /* Make sure the logo fills its container */
-  height: auto; /* Maintain aspect ratio */
+  margin-left: 15px;
+  margin-top: 20px;
+  height: 50px;
+  width: 180px;
 }
 
 .navbar {
-  flex: 0 0 60%; /* Set the navbar width to 60% of the available space */
-  padding: 70px; 
+  flex: 0 0 85%; /* Set the navbar width to 60% of the available space */ ;
+  margin-top: 15px
 }
 
 .nav-list{
   @apply flex justify-around items-center; /* Example: Flex container with space-around alignment */
-  gap: 20px; /* Add spacing between flex items */
-  padding: 10px 20px; /* Apply padding to the list instead */
-  margin: 0;
-}
-
-
-.nav-link {
-  @apply text-white text-lg no-underline; /* Example: White text, bold font, and remove underline */
+  gap:0%; /* Add spacing between flex items */
+  padding: 0px 50px; /* Apply padding to the list instead */
 }
 
 .nav-link {
-  @apply text-blue-500 font-bold text-lg no-underline; /* Set text color to blue */
+  @apply text-white text-center text-xl no-underline; /* Set text color to blue */
 }
 
 

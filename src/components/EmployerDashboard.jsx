@@ -1,94 +1,49 @@
+// EmployerDashboard.jsx
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import EmployerSkillPage from './EmployerSkillPage';
+import '../styles/Employer.css';
 
-const SkillBox = ({ skill, imageSrc, boxColor, boxMargin }) => {
+const SkillBox = ({ skill, imageSrc, boxColor }) => {
+  const navigate = useNavigate();
+
+  const handleSkillBoxClick = () => {
+    navigate(`/skills/${skill.toLowerCase()}`);
+  };
+
   return (
-    <div className={`rounded-lg overflow-hidden shadow-lg h-full ${boxColor} ${boxMargin}`}>
+    <div className={`rounded-lg overflow-hidden shadow-lg ${boxColor} cursor-pointer mb-8`} onClick={handleSkillBoxClick}>
       <div className="text-center p-4">
-        <h2 className="text-xl font-bold mb-2">{skill}</h2>
+        <h2 className="text-xl font-bold text-white">{skill}</h2>
       </div>
-      <img src={imageSrc} alt={skill} className="w-80 h-40 object-cover" />
+      <img src={imageSrc} alt={skill} className="w-full h-40 object-cover" />
     </div>
   );
 };
 
 const EmployerDashboard = () => {
   return (
-    <div className="bg-gray-200">
-      <div className="container mx-auto px-4 py-8 min-w-auto">
-        <h1 className="text-3xl font-bold mb-4 text-center">Employer Dashboard</h1>
-        <p className="text-gray-600 mb-6 text-center">Welcome to the portal to hire skilled and unskilled laborers.</p>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Link to="/carpentry" className="group">
-            <SkillBox
-              skill="Carpentry"
-              imageSrc="src/assets/carpentry.jpg" 
-              boxColor="bg-blue-50"
-              boxMargin="mx-3 my-3"
-            />
-          </Link>
-          <Link to="/plumbing" className="group">
-            <SkillBox
-              skill="Plumbing"
-              imageSrc="src/assets/plumber.jpg" 
-              boxColor="bg-blue-50"
-              boxMargin="mx-3 my-3"
-            />
-          </Link>
-          <Link to="/welding" className="group">
-            <SkillBox
-              skill="Welding"
-              imageSrc="src/assets/welding.jpg" 
-              boxColor="bg-blue-50"
-              boxMargin="mx-3 my-3"
-            />
-          </Link>
-          <Link to="/general-labour" className="group">
-            <SkillBox
-              skill="General Labour"
-              imageSrc="src/assets/general-labour.jpg" 
-              boxColor="bg-blue-50"
-              boxMargin="mx-3 my-3"
-            />
-          </Link>
-        </div>
+    <div className="layout">
+      <Routes>
+        <Route path="/skills/:skill" element={<EmployerSkillPage />} />
+      </Routes>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-          <Link to="/cleaning" className="group">
-            <SkillBox
-              skill="Cleaning"
-              imageSrc="src/assets/cleaner.jpg" 
-              boxColor="bg-blue-50"
-              boxMargin="mx-3 my-3"
-            />
-          </Link>
-          <Link to="/general-labour" className="group">
-            <SkillBox
-              skill="General Labour"
-              imageSrc="src/assets/general-labour.jpg" 
-              boxColor="bg-blue-50"
-              boxMargin="mx-3 my-3"
-            />
-          </Link>
-          <Link to="/general-labour" className="group">
-            <SkillBox
-              skill="General Labour"
-              imageSrc="src/assets/general-labour.jpg" 
-              boxColor="bg-blue-50"
-              boxMargin="mx-3 my-3"
-            />
-          </Link>
-          <Link to="/general-labour" className="group">
-            <SkillBox
-              skill="General Labour"
-              imageSrc="src/assets/general-labour.jpg" 
-              boxColor="bg-blue-50"
-              boxMargin="mx-3 my-3"
-            />
-          </Link>
-        </div>
+      <div className="column">
+        <SkillBox skill="Carpentry" imageSrc="src/assets/carpentry.jpg" boxColor="bg-blue-600" />
+        <SkillBox skill="Plumber" imageSrc="src/assets/plumber.jpg" boxColor="bg-blue-600" />
       </div>
+
+      <div className="column">
+        <SkillBox skill="Cleaner" imageSrc="src/assets/cleaner.jpg" boxColor="bg-blue-600" />
+        <SkillBox skill="General Labour" imageSrc="src/assets/general-labour.jpg" boxColor="bg-blue-600" />
+        {/* Add more SkillBoxes as needed */}
+      </div>
+
+     <div className="column">
+       <SkillBox skill="Welding" imageSrc="src/assets/welding.jpg" boxColor="bg-blue-600" />
+       <SkillBox skill="General Labour" imageSrc="src/assets/general-labour.jpg" boxColor="bg-blue-600" />
+       {/* Add more SkillBoxes as needed */}
+     </div>
     </div>
   );
 };

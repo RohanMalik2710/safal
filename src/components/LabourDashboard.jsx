@@ -11,6 +11,8 @@ import {db} from "../firebase.config"
 
 const LabourDashboard = () => {
 
+  const[count,setCount] = useState(0);
+  
   const [darkMode, setDarkMode] = useState(false);
 
   const toggleDarkMode = () => {
@@ -24,7 +26,6 @@ const LabourDashboard = () => {
     const q = query(collection(db, "jobs"));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
-      //console.log(doc.id, " => ", doc.data());
       tempJobs.push({
         ...doc.data(),
         id: doc.id,
@@ -34,13 +35,13 @@ const LabourDashboard = () => {
     setJobPostings(tempJobs);
   }
 
+  useEffect(() => {
+    fetchJobs()
+  },[count])
+
   const timeAgo = (date) => {
     return formatDistanceToNow(date, { addSuffix: true });
   };
-
-  useEffect(() => {
-    fetchJobs()
-  },[])
 
   const [showApplyForm, setShowApplyForm] = useState(false);
   const [selectedJob, setSelectedJob] = useState(null);
@@ -48,7 +49,7 @@ const LabourDashboard = () => {
 
 
   const handleApply = (postId) => {
-    setShowApplyForm(postId);
+    setShowApplyForm(postId); 
     setSelectedJob(postId);
   };
 
@@ -77,11 +78,12 @@ const LabourDashboard = () => {
 
   return (
     <div className={`labour-container ${darkMode ? 'dark-mode' : 'light-mode'}`}>
-      <DarkModeToggle darkMode={darkMode} onToggle={toggleDarkMode} />
+      <p className="title-description">Jobs In Demand</p>
+      <br />
       <LabourSlider onExploreClick={scrollToJobPosting} />
       <br />
       <p className="labour-description">Explore Jobs</p>
-
+      
       <div className='job-postings-box' ref={jobPostingsRef}>
         {jobPostings.map((post) => (
           <div key={post.id} id={`job-posting-${post.id}`} className={`job-posting ${highlightedJob === post.id ? 'highlighted' : ''}`}>
@@ -117,7 +119,10 @@ const LabourDashboard = () => {
             <input type="text" />
             <label>Upload Aadhar Card Picture:</label>
             <input type="file" accept="image/*" />
-            <button className="apply-button" onClick={handleFormClose}>Submit Application</button>
+            <button className="apply-button" onClick={() => {
+              handleFormClose();
+              setCount(count+1);
+            }}>Submit Application</button>
           </div>
         </div>
       )}

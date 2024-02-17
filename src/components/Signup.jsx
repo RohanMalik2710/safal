@@ -1,4 +1,4 @@
-// src/components/Signup.js
+// Signup.js
 import React, { useState } from 'react';
 
 const Signup = () => {
