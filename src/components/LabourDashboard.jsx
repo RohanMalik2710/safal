@@ -11,6 +11,22 @@ import {db} from "../firebase.config"
 
 const LabourDashboard = () => {
 
+  const [hoverStyle, setHoverStyle] = useState({});
+
+  const handleHover = (e) => {
+    const { clientX, clientY } = e;
+    const box = e.currentTarget.getBoundingClientRect();
+    const offsetX = clientX - box.left - box.width / 2;
+    const offsetY = clientY - box.top - box.height / 2;
+
+    const rotateX = -offsetY / 15; // Adjust the rotation sensitivity
+    const rotateY = offsetX / 15;
+
+    setHoverStyle({
+      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(30px)`,
+    });
+  };
+
   const[count,setCount] = useState(0);
   
   const [darkMode, setDarkMode] = useState(false);
@@ -86,16 +102,18 @@ const LabourDashboard = () => {
       
       <div className='job-postings-box' ref={jobPostingsRef}>
         {jobPostings.map((post) => (
-          <div key={post.id} id={`job-posting-${post.id}`} className={`job-posting ${highlightedJob === post.id ? 'highlighted' : ''}`}>
+          <div key={post.id} id={`job-posting-${post.id}`} className={`job-posting ${highlightedJob === post.id ? 'highlighted' : ''}`}
+          onMouseMove={handleHover}
+          onMouseLeave={() => setHoverStyle({})}
+          style={hoverStyle}>
             <h3>{post.title}</h3>
             <p>Company: {post.company}</p>
             <p>Location: {post.location}</p>
             <p>Posted : {timeAgo(post.postedOn)}</p>
             <button
-              className="apply-button"
-              onClick={() => handleApply(post.id)}
-            >
-              Apply
+            className="apply-button"
+            onClick={() => handleApply(post.id)}>
+            Apply
             </button>
           </div>
         ))}
