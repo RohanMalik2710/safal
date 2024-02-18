@@ -23,22 +23,34 @@ const Home = () => {
       </div>
       {/* New div outside home-container */}
       <div className="new-div">
-        <h2 id="serve-title">WHAT WE SERVE</h2>
-        <p id="serve-info">Your Favorite Labor Finding Partner</p>
-        {/* Images column */}
-        <div className="image-column">
-          <img src="src/assets/slider4.jpg" alt="First Image" />
-          <img src="src/assets/slider4.jpg" alt="Second Image" />
-          <img src="src/assets/slider4.jpg" alt="Third Image" />
+      <h2 id="content-title">WHAT WE SERVE</h2>
+        
+        <div class="serve-sections">
+          <div class="serve-section">
+            <img src="src/assets/slider4.jpg" alt="Labor Finding Image" />
+            <h3>Labors</h3>
+            <p>We help the individuals to connect with job opportunities.</p>
+          </div>
+
+          <div class="serve-section">
+            <img src="src/assets/slider4.jpg" alt="Employer Finding Image" />
+            <h3>Employers</h3>
+            <p>We assist employers in finding suitable labor for their needs.</p>
+          </div>
         </div>
 
+
         <div className="our-mission">
+        <h2 id="content-title">OUR MISSION</h2>
           <div className="mission-content">
-            <img src="src/assets/images.png" alt="Company Image" />
+            <img src="./src/assets/safal-logo.png" alt="Company Image" />
             <div className="mission-text">
-              <h2>Our Mission</h2>
-              <p>At LaborConnect, our mission is to bridge the gap between laborers and employers by providing a dedicated platform for both parties.</p>
-              <p>We aim to empower laborers by connecting them with job opportunities that match their skills and expertise, while also assisting employers in finding reliable and skilled workers efficiently.</p>
+            <p>At SAFAL, our mission is to bridge the gap between laborers and employers by providing a dedicated platform for both parties.</p>
+            <p>We aim to empower laborers by connecting them with job opportunities that match their skills and expertise.</p>
+            <p>Through our platform, laborers can access a wide range of job listings and apply to positions that suit their preferences.</p>
+            <p>Additionally, we provide tools and resources to help laborers enhance their skills and improve their employability.</p>
+            <p>On the other hand, we assist employers in finding reliable and skilled workers efficiently.</p>
+            <p>Employers can post job listings, search for laborers, and manage the hiring process seamlessly through our platform.</p>
             </div>
           </div>
         </div>
@@ -46,7 +58,7 @@ const Home = () => {
 
         {/* Our Team Section */}
         <div className="our-team">
-          <h2>Our Team</h2>
+          <h2 id="content-title">OUR TEAM</h2>
           <div class="team-member">
             <a href="https://www.linkedin.com/in/john-doe">
               <img src="src/assets/slider4.jpg" alt="John Doe" />
