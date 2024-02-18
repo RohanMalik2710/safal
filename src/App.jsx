@@ -7,10 +7,6 @@ import EmployerDashboard from './components/EmployerDashboard';
 import Login from './components/Login';
 import Signup from './components/Signup';
 
-import CarpentryJobPost from './components/CarpentryJobPost';
-import CarpentryLaborers from './components/CarpentryLaborers';
-import PlumbingJobPost from './components/PlumbingJobPost';
-import PlumbingLaborers from './components/PlumbingLaborers';
 import DarkModeToggle from './components/DarkModeToggle'; // Import the DarkModeToggle component
 
 import EmployerSkillPage from './components/EmployerSkillPage';
@@ -61,13 +57,13 @@ const App = () => {
               <Link to="/home" className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
-              <Link to="/labours" className="nav-link">Labours</Link>
+              <Link to="/labour" className="nav-link">Labour</Link>
             </li>
             <li className="nav-item">
-              <Link to="/employers" className="nav-link">Employers</Link>
+              <Link to="/employer" className="nav-link">Employer</Link>
             </li>
             <li className="nav-item">
-              <Link to="/login" className="nav-link">Login</Link>
+              <Link to="/signup" className="nav-link">Signup</Link>
             </li>
             <li className="nav-item">
               <DarkModeToggle darkMode={darkMode} onToggle={toggleDarkMode} />
@@ -78,17 +74,11 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/labours" element={<LabourDashboard />} />
-        <Route path="/employers/*" element={<EmployerDashboard />} />
+        <Route path="/labour" element={<LabourDashboard />} />
+        <Route path="/employer/*" element={<EmployerDashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-
-        <Route path="/carpentry" element={<CarpentryJobPost />} />
-        <Route path="/carpentry/laborers" element={<CarpentryLaborers />} />
-        <Route path="/plumbing" element={<PlumbingJobPost />} />
-        <Route path="/plumbing/laborers" element={<PlumbingLaborers />} />
-
-        <Route path="/skills/carpentry/*" element={<EmployerSkillPage skill="Carpentry" />} />
+        <Route path="/employer/:skill/*" element={<EmployerSkillPage />} />
       </Routes>
 
       <Footer></Footer>
