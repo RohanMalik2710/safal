@@ -1,42 +1,125 @@
-// Signup.js
+// Signup.jsx
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Login from './Login';
+import { collection, addDoc } from 'firebase/firestore';
+import { db, auth } from '../firebase.config';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
 const Signup = () => {
   const [userData, setUserData] = useState({
-    name: '',
-    phoneNumber: '',
     email: '',
-    aadhar: '',
     password: '',
-    accountType: '', // To store whether it's a Labour or Employer account
+    name: '',
+    aadhar: '',
+    phone: '',
+    userType: '',
   });
+  const [error, setError] = useState('');
 
   const handleInputChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const handleSignup = () => {
-    // Implement signup functionality
-    // You can access the selected account type using userData.accountType
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (userData.password.length < 6) {
+        setError('Password should be at least 6 characters');
+        return;
+      }
+
+      const aadharRegex = /^\d{12}$/;
+      // Add validation for Aadhar number
+      if (!aadharRegex.test(userData.aadhar.trim())) {
+        setError('Aadhar number should be exactly 12 digits');
+        return;
+      }
+
+      // Add validation for password complexity (at least one special character or number)
+      if (!/(?=.*[\d!@#$%^&*()_+])/.test(userData.password)) {
+        setError('Password should contain at least one special character or number');
+        return;
+      }
+
+      // Create user account
+      const { user } = await createUserWithEmailAndPassword(auth, userData.email, userData.password);
+
+      // Add user data to the "users" collection
+      await addDoc(collection(db, 'users'), {
+        aadhar: userData.aadhar,
+        email: userData.email,
+        name: userData.name,
+        phone: userData.phone,
+        userType: userData.userType,
+        uid: user.uid, // Store user UID for reference
+      });
+
+      const userDetails = {
+        name: userData.name,
+        email: userData.email,
+        // Add other details as needed
+      };
+
+      // Save user details to Firestore
+      await setDoc(doc(db, 'users', user.uid), userDetails);
+
+      // Reset form data and clear error
+      setUserData({
+        email: '',
+        password: '',
+        name: '',
+        aadhar: '',
+        phone: '',
+        userType: '',
+      });
+      setError('');
+
+      // Redirect or perform other actions upon successful signup
+    } catch (error) {
+      if (error.code === 'auth/email-already-in-use') {
+        setError('Email already in use');
+        // Display your custom error message to the user
+      } else {
+        setError(error.message);
+        // Handle other signup errors
+      }
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
         <h2 className="text-3xl font-bold text-center text-gray-800">Sign Up</h2>
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-3 rounded relative" role="alert">
+            <span className="block sm:inline"> {error}</span>
+          </div>
+        )}
         <form className="mt-8 space-y-6" onSubmit={handleSignup}>
-          {/* ... Other fields ... */}
-          <div>
-            <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-600">
-              Phone Number
+        <div>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-600">
+              Name
             </label>
             <input
-              id="phoneNumber"
-              name="phoneNumber"
-              type="tel"
-              autoComplete="tel"
+              id="name"
+              name="name"
+              type="text"
+              autoComplete="name"
+              required
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-600">
+              Email Address
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autoComplete="email"
               required
               className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
               onChange={handleInputChange}
@@ -57,19 +140,46 @@ const Signup = () => {
             />
           </div>
           <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-gray-600">
+              Phone Number
+            </label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autoComplete="tel"
+              required
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
             <label className="block text-sm font-medium text-gray-600">Account Type</label>
             <select
-              name="accountType"
-              id="accountType"
+              name="userType"
+              id="userType"
               className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
               onChange={handleInputChange}
             >
               <option value="">Select Account Type</option>
-              <option value="labour">Labour</option>
-              <option value="employer">Employer</option>
+              <option value="Labour">Labour</option>
+              <option value="Employer">Employer</option>
             </select>
           </div>
-          {/* ... Other fields ... */}
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-600">
+              Password
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              required
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+              onChange={handleInputChange}
+            />
+          </div>
           <div>
             <button
               type="submit"
@@ -79,9 +189,6 @@ const Signup = () => {
             </button>
           </div>
         </form>
-        <p>
-        Don't have an account? <Link to="/Login" className="signup-link">Login here</Link>
-        </p>
       </div>
     </div>
   );

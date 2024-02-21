@@ -1,24 +1,16 @@
 // JobPostingForm.jsx
 import React, { useState } from 'react';
-import { useSpring, animated } from 'react-spring';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase.config';
 
 const JobPostingForm = ({ onClose, skill }) => {
-
-  // Animation spring for the happy animation
-  const happyAnimation = useSpring({
-    transform: 'scale(1)',
-    from: { transform: 'scale(0.8)' },
-    reset: true,
-  });
-  
   const [jobData, setJobData] = useState({
     title: `${skill}`,
     company: '',
     location: '',
     // Add more fields as needed
   });
+  const [isJobPosted, setIsJobPosted] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,18 +27,21 @@ const JobPostingForm = ({ onClose, skill }) => {
 
       // Reset form data
       setJobData({
-        title: '',
+        title: `${skill}`,
         company: '',
         location: '',
         // Reset other fields as needed
       });
 
-      happyAnimation.reset();
+      // Set job posted state to true for celebration message
+      setIsJobPosted(true);
 
-      // Close the form
-      onClose();
-    } 
-    catch (error) {
+      // Close the form after a delay
+      setTimeout(() => {
+        onClose();
+        setIsJobPosted(false);
+      }, 3000); // 3000 milliseconds (3 seconds)
+    } catch (error) {
       console.error('Error posting job: ', error.message);
     }
   };
@@ -60,12 +55,19 @@ const JobPostingForm = ({ onClose, skill }) => {
   };
 
   return (
-    <animated.div className="job-posting-form" style={happyAnimation}>
-    <div className="job-posting-form bg-white p-8 rounded-md shadow-md mt-4">
-      <h2 className="text-2xl font-bold text-blue-500 mb-4">Post a New Job for {skill}</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="job-posting-form fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-8 rounded-md shadow-md">
+      <h2 className="text-2xl font-bold mb-4">Post a New Job for {skill}</h2>
+
+      {isJobPosted && (
+        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 my-3 rounded relative" role="alert">
+          <strong className="font-bold">Success!</strong>
+          <span className="block sm:inline"> Job posted successfully</span>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-4">
         {/* Add input fields for job details */}
-        <div className="mb-4">
+        <div>
           <label className="block text-sm font-medium text-gray-600">Title:</label>
           <input
             type="text"
@@ -75,7 +77,7 @@ const JobPostingForm = ({ onClose, skill }) => {
           />
         </div>
 
-        <div className="mb-4">
+        <div>
           <label className="block text-sm font-medium text-gray-600">Company:</label>
           <input
             type="text"
@@ -86,7 +88,7 @@ const JobPostingForm = ({ onClose, skill }) => {
           />
         </div>
 
-        <div className="mb-4">
+        <div>
           <label className="block text-sm font-medium text-gray-600">Location:</label>
           <input
             type="text"
@@ -98,15 +100,15 @@ const JobPostingForm = ({ onClose, skill }) => {
         </div>
 
         {/* Add more input fields for other job details as needed */}
+
         <button
           type="submit"
-          className="mt-4 px-4 py-2 w-full bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
+          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300"
         >
           Post Job
         </button>
       </form>
-      </div>
-    </animated.div>
+    </div>
   );
 };
 

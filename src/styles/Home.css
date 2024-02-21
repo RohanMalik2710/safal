@@ -1,177 +1,202 @@
-/* Home.css */
+.home-container {
+  background: var(--root-bg);
+  text-align: center;
+  display: flex;
+}
+.image-container {
+  display: flex;
+  justify-content: center; /* Horizontally center the image */
+  align-items: center; /* Vertically center the image */
+  flex: 1; /* Allow the container to grow to fill available space */
+}
 
-  .home-container {
-    background: var(--root-bg);
-    text-align: center;
-    display: flex;
-  }
-  .image-container {
-    display: flex;
-    justify-content: center; /* Horizontally center the image */
-    align-items: center; /* Vertically center the image */
-    flex: 1; /* Allow the container to grow to fill available space */
-  }
-  
-  .content-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .title {
-    font-weight: bold;
-    font-size: 5.27vw;
-    line-height: 105px;
-    position: relative;
-    margin-left: 50px;
-  }
-  
-  #description {
-    font-size: 18px;
-    line-height: 30px;
-    width: 430px;
-    font-weight: 500;
-  }
-  
-  #button {
-    text-align: center;
-    
-    border-radius: 25px;
-  }
+.content-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .new-div {
-    text-align: center;
-    margin-top: 20px;
-  }
+.title {
+  font-weight: bold;
+  font-size: 5.27vw;
+  line-height: 105px;
+  position: relative;
+  margin-left: 50px;
+}
 
-  #content-title {
-    font-weight: 700;
-    font-size: 50px; /* Adjust font size as needed */
-    text-align: center; /* Center the title */
-    margin-bottom: 40px;
-    margin-top: 50px;
-  }
+#description {
+  font-size: 18px;
+  line-height: 30px;
+  width: 430px;
+  font-weight: 500;
+}
+
+#button {
+  text-align: center;
   
+  border-radius: 25px;
+}
+
+.new-div {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#content-title {
+  font-weight: 700;
+  font-size: 50px; /* Adjust font size as needed */
+  text-align: center; /* Center the title */
+  margin-bottom: 40px;
+  margin-top: 50px;
+}
 
 
 
-  
-  .serve-sections {
-    display: flex;
-    gap: 50px;
-    justify-content: center; /* Center the sections horizontally */
-  }
-  
-  .serve-section {
-    flex: 1;
-    margin: 0 10px; /* Add space around each section */
-    max-width: 300px; /* Limit the maximum width of each section */
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-  }
-  
-  .serve-section img {
-    width: 100%;
-    max-width: 200px; /* Adjust image width as needed */
-    height: auto;
-    margin-bottom: 10px;
-  }
-  
-  .serve-section h3 {
-    font-size: 36px;
-    margin-bottom: 15px;
-    margin-top: 15px;
-   
-  }
-  
-  .serve-section p {
-    text-align: justify;
-    font-size: 25px;
-    line-height: 1.4;
-  }
-  
-  
-  
-  
-  
 
-  .our-mission {
-    padding: 50px 30px; /* Add padding */
-    margin-top: 30px;
-  }
-  
-  .mission-content {
-    display: flex;
-    justify-content:center;
-    align-items: center;
-    gap: 50px;
-    margin-left: 70px;
-    margin-right: 50px;
-  }
-  
-  .mission-content img {
-    width: 350px;
-    max-width: 100%;
-    height: 200px; /* Adjust the height to your desired size */
-    max-width: 100%; /* Set maximum width for responsiveness */
-    border-radius: 10px; /* Add border radius for rounded corners */
-  }
 
-  
-  .mission-text p {
-    font-size: 1.27vw;
-    line-height: 1.6;
-    position: relative;
-    margin-bottom: 7px; /* Add margin bottom for spacing */
-    text-align: justify;
-  }
+.serve-sections {
+  display: flex;
+  gap: 100px;
+  justify-content: center; /* Center the sections horizontally */
+}
+
+.serve-section1 {
+  flex: 1;
+  margin: 0 10px; /* Add space around each section */
+  max-width: 300px; /* Limit the maximum width of each section */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.serve-section1 img {
+  width: 100%;
+  max-width: 200px; /* Adjust image width as needed */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.serve-section1 h3 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+ 
+}
+
+.serve-section1 p {
+  text-align: justify;
+  font-size: 25px;
+  line-height: 1.4;
+}
+.serve-section2 {
+  flex: 1;
+  margin: 0 10px; /* Add space around each section */
+  max-width: 300px; /* Limit the maximum width of each section */
+  display: flex; /* Use flexbox */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.serve-section2 img {
+  width: 100%;
+  max-width: 290px; /* Adjust image width as needed */
+  max-height: 300px;
+  height: 100%;
+  margin-bottom: 10px;
+}
+
+.serve-section2 h3 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  margin-top: 15px;
+ 
+}
+
+.serve-section2 p {
+  text-align: justify;
+  font-size: 25px;
+  line-height: 1.4;
+}
 
 
 
-  .our-team {
-    text-align: center;
-    margin-top: 30px; /* Adjust as needed */
-  }
-  
-  .our-team h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
 
-  .team-member p {
-    margin-top: 10px;
-  }
-  .team-member {
-    display: inline-block;
-    margin-right: 20px; /* Adjust spacing between team members */
-    perspective: 1000px; /* Set perspective for 3D effect */
-  }
-  
-  .team-member img {
-    height: 200px;
-    width: 200px; /* Adjust image width as needed */
-    border: 2px dashed purple; /* Set border properties */
-    border-radius: 50%; /* Make the image rounded */
-    overflow: hidden; /* Ensure the border-radius is applied */
-    margin-bottom: 10px; /* Adjust margin between team members */
-    transition: transform 0.5s ease; /* Add transition effect */
-    padding: 10px; /* Add padding to create a gap between border and image */
 
-  }
-  
-  .team-member img:hover {
-    transform: scale(1.1) rotate(5deg); /* Increase size and rotate the image on hover */
-    filter: blur(2px); /* Apply blur effect on hover */
 
-  }
+.our-mission {
+  padding: 50px 30px; /* Add padding */
+  margin-top: 30px;
+}
 
-  .footer {
-    background-color: #333;
-    margin-top: 20px;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-  }
+.mission-content {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  gap: 50px;
+  margin-left: 70px;
+  margin-right: 50px;
+}
+
+.mission-content img {
+  width: 350px;
+  max-width: 100%;
+  height: 200px; /* Adjust the height to your desired size */
+  max-width: 100%; /* Set maximum width for responsiveness */
+  border-radius: 10px; /* Add border radius for rounded corners */
+}
+
+
+.mission-text p {
+  font-size: 1.27vw;
+  line-height: 1.6;
+  position: relative;
+  margin-bottom: 7px; /* Add margin bottom for spacing */
+  text-align: justify;
+}
+
+
+
+.our-team {
+  text-align: center;
+  margin-top: 30px; /* Adjust as needed */
+}
+
+.our-team h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.team-member p {
+  margin-top: 10px;
+}
+.team-member {
+  display: inline-block;
+  margin-right: 20px; /* Adjust spacing between team members */
+  perspective: 1000px; /* Set perspective for 3D effect */
+}
+
+.team-member img {
+  height: 200px;
+  width: 200px; /* Adjust image width as needed */
+  border: 2px dashed purple; /* Set border properties */
+  border-radius: 50%; /* Make the image rounded */
+  overflow: hidden; /* Ensure the border-radius is applied */
+  margin-bottom: 10px; /* Adjust margin between team members */
+  transition: transform 0.5s ease; /* Add transition effect */
+  padding: 10px; /* Add padding to create a gap between border and image */
+
+}
+
+.team-member img:hover {
+  transform: scale(1.1) rotate(5deg); /* Increase size and rotate the image on hover */
+}
+
+.footer {
+  background-color: #333;
+  margin-top: 20px;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}

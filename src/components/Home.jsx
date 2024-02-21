@@ -1,5 +1,3 @@
-//Home.jsx
-
 import React from 'react';
 import '../styles/Home.css'; 
 
@@ -15,10 +13,10 @@ const Home = () => {
         </div>
         <div className="content-container">
           <div className="title">
-            <h1 id="title">Be The Fastest In Getting Mazdoor at <span id="doorStep">DoorStep</span></h1>
+            <h1 id="title">One stop portal for Labours and Employers</h1>
           </div>
-          <p id="description">To provide an easy platform for builders to hire the laborers</p>
-          <div id="button">Find Mazdoor</div>
+          <p id="description">An easy platform to Hire</p>
+          <p id="description">And get Hired</p>
         </div>
       </div>
       {/* New div outside home-container */}
@@ -26,21 +24,21 @@ const Home = () => {
       <h2 id="content-title">WHAT WE SERVE</h2>
         
         <div class="serve-sections">
-          <div class="serve-section">
-            <img src="src/assets/slider4.jpg" alt="Labor Finding Image" />
+          <div class="serve-section1">
+            <img src="src/assets/labour.png" alt="Labor Finding Image" />
             <h3>Labors</h3>
             <p>We help the individuals to connect with job opportunities.</p>
           </div>
 
-          <div class="serve-section">
-            <img src="src/assets/slider4.jpg" alt="Employer Finding Image" />
+          <div class="serve-section2">
+            <img src="src/assets/employers.png" alt="Employer Finding Image" />
             <h3>Employers</h3>
             <p>We assist employers in finding suitable labor for their needs.</p>
           </div>
         </div>
 
 
-        <div className="our-mission">
+        <div className="our-mission" id="mission">
         <h2 id="content-title">OUR MISSION</h2>
           <div className="mission-content">
             <img src="./src/assets/safal-logo.png" alt="Company Image" />
@@ -57,31 +55,31 @@ const Home = () => {
 
 
         {/* Our Team Section */}
-        <div className="our-team">
+        <div className="our-team"  id="team">
           <h2 id="content-title">OUR TEAM</h2>
           <div class="team-member">
-            <a href="https://www.linkedin.com/in/john-doe">
-              <img src="src/assets/slider4.jpg" alt="John Doe" />
+            <a target='_blank' href="https://www.linkedin.com/in/abhishek-sood-200722260/">
+              <img src="src/assets/slider4.jpg" alt="Abhishek Sood" />
             </a>
-            <p>John Doe</p>
+            <p>Abhishek Sood</p>
           </div>
           <div class="team-member">
-            <a href="https://www.linkedin.com/in/jane-smith">
-              <img src="src/assets/slider4.jpg" alt="Jane Smith" />
+            <a target='_blank' href="https://www.linkedin.com/in/rohan-malik-977330269">
+              <img src="src/assets/slider4.jpg" alt="Rohan Malik" />
             </a>
-            <p>Jane Smith</p>
+            <p>Rohan Malik</p>
           </div>
           <div class="team-member">
-            <a href="https://www.linkedin.com/in/tom-brown">
-              <img src="src/assets/slider4.jpg" alt="Tom Brown" />
+            <a target='_blank' href="https://www.linkedin.com/in/varun-pratap-singh-1aa3732b6/">
+              <img src="src/assets/slider4.jpg" alt="Varun Pratap" />
             </a>
-            <p>Tom Brown</p>
+            <p>Varun Pratap</p>
           </div>
           <div class="team-member">
-            <a href="https://www.linkedin.com/in/tom-brown">
-              <img src="src/assets/slider4.jpg" alt="Tom Brown" />
+            <a target='_blank' href="https://www.linkedin.com/in/varun-pratap-singh-1aa3732b6/">
+              <img src="src/assets/slider4.jpg" alt="Arshia Gupta" />
             </a>
-            <p>Tom Brown</p>
+            <p>Arshia Gupta</p>
           </div>
         </div>
       </div>

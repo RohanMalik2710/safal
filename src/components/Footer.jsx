@@ -1,21 +1,41 @@
 // Footer.jsx
+
 import React from 'react';
-import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Import the Font Awesome icons
-import '../styles/Footer.css'; // Import the Footer.css file for styling
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import '../styles/Footer.css';
+import Home from './Home'; // Import Home component
+import './Home'; // This import doesn't seem necessary
 
 const Footer = () => {
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  // Define onClick functions to scroll to respective sections in Home component
+  const handleTeamLinkClick = () => {
+    scrollToSection('team');
+  };
+
+  const handleMissionLinkClick = () => {
+    scrollToSection('mission');
+  };
+
   return (
     <footer className="footer">
       <div className="footer-content">
-        {/* Image on the left */}
         <div className="footer-image">
-          {/* Add your image here */}
           <img src="./src/assets/safal-transparent-logo.png" alt="Company Logo" />
         </div>
-        {/* Text on the right */}
         <div className="social-icons">
-            <a href="https://github.com/your-github-url" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
-            <a href="https://linkedin.com/in/your-linkedin-url" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
+          <a href="https://github.com/your-github-url" target="_blank" rel="noopener noreferrer"><FaGithub /></a>
+          <a href="https://linkedin.com/in/your-linkedin-url" target="_blank" rel="noopener noreferrer"><FaLinkedin /></a>
         </div>
         <div className="footer-links">
           <div className="section">
@@ -26,19 +46,16 @@ const Footer = () => {
           <div className="section">
             <h3>About</h3>
             <p>Company</p>
-            <p>Team</p>
-            <p>History</p>
+            <a href="#team" onClick={handleTeamLinkClick}>Team</a>
+            <a href="#mission" onClick={handleMissionLinkClick}>Mission</a>
           </div>
           <div className="section">
-            <h3>Get in Touch</h3>
+            <Link to="/FeedbackForm">Feedback</Link>
             <p>Contact Us</p>
             <p>Support</p>
-            <p>Feedback</p>
           </div>
         </div>
       </div>
-      {/* GitHub and LinkedIn icons */}
-      
       <p>&copy; 2024 Team SAFAL. All rights reserved.</p>
     </footer>
   );

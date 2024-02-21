@@ -1,7 +1,8 @@
-//Login.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Signup from './Signup';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { collection, getDoc, doc } from 'firebase/firestore';
+import { db, auth } from '../firebase.config';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -13,14 +14,49 @@ const Login = () => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
-  const handleLogin = () => {
-    // Implement login functionality
+  const [error, setError] = useState('');
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Log in the user
+      const { user } = await signInWithEmailAndPassword(auth, loginData.email, loginData.password);
+
+      // Check if user exists in the "users" collection
+      const userDoc = await getDoc(doc(db, 'users', user.uid));
+
+      const userDetails = {
+        name: loginData.name,
+        email: loginData.email,
+        // Add other details as needed
+      };
+
+      if (userDoc.exists()) {
+        
+        // Redirect or perform other actions upon successful login
+      } else {
+        // User doesn't exist in the database
+        setError('User not found');
+        // Display your custom error message to the user
+
+      // Redirect or perform other actions upon successful login
+    } 
+    }catch (error) {
+      setError(error.message);
+      // Handle login error
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="max-w-md w-full space-y-8 p-8 bg-white rounded-lg shadow-md">
         <h2 className="text-3xl font-bold text-center text-gray-800">Login</h2>
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 my-3 rounded relative" role="alert">
+            <span className="block sm:inline"> {error}</span>
+          </div>
+        )}
         <form className="mt-8 space-y-6" onSubmit={handleLogin}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-600">
