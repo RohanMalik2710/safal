@@ -3,8 +3,8 @@ import '../styles/Home.css';
 
 const Home = () => {
   return (
-    <div>
-      <div className="home-container">
+    <div id="home-container">
+      <div className="home-container" >
         <div className="image-container">
           <video autoPlay loop muted>
             <source src="src/assets/home.mp4" type="video/mp4" />
@@ -20,10 +20,10 @@ const Home = () => {
         </div>
       </div>
       {/* New div outside home-container */}
-      <div className="new-div">
+      <div className="new-div" id="serve-sections">
       <h2 id="content-title">WHAT WE SERVE</h2>
         
-        <div class="serve-sections">
+        <div class="serve-sections" >
           <div class="serve-section1">
             <img src="src/assets/labour.png" alt="Labor Finding Image" />
             <h3>Labors</h3>
@@ -82,6 +82,20 @@ const Home = () => {
             <p>Arshia Gupta</p>
           </div>
         </div>
+        <div className="about-us" id="about-us">
+        <h2 id="content-title">ABOUT US</h2>
+        <div className="about-us-image">
+            <img src="src/assets/aboutus.png" alt="About Us" />
+          </div>
+          <div className="about-us-content">
+            <p>We are students of PEC (Punjab Engineering College), Chandigarh, passionate about creating a common platform for both employers and laborers to connect effectively.</p>
+            <p>Our aim is to bridge the gap between job seekers and employers by providing a user-friendly and efficient platform that caters to the needs of both parties.</p>
+            <p>Through our platform, we envision empowering laborers by providing them access to a wide range of job opportunities and resources to enhance their skills and employability.</p>
+            <p>At the same time, we aim to assist employers in finding reliable and skilled workers seamlessly, thereby facilitating the hiring process and contributing to their business growth.</p>
+          </div>
+          
+        </div>
+
       </div>
 
     </div>
