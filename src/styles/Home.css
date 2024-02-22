@@ -193,10 +193,38 @@
   transform: scale(1.1) rotate(5deg); /* Increase size and rotate the image on hover */
 }
 
-.footer {
-  background-color: #333;
-  margin-top: 20px;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
+
+.about-us {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  margin-top: 50px; /* Adjust margin as needed */
+}
+.about-us {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  margin-top: 50px; /* Adjust margin as needed */
+}
+
+.about-us h2 {
+  margin-bottom: 20px; /* Add spacing between heading and image/content */
+}
+
+.about-us-image {
+  margin-bottom: 20px; /* Add spacing between image and content */
+}
+
+.about-us-image img {
+  max-width: 170px;
+  max-height: 170px; /* Ensure image doesn't exceed its container */
+  height: auto; /* Maintain aspect ratio */
+}
+  
+.about-us-content {
+  text-align: justify; /* Justify the text */
+}
+
+.about-us-content p {
+  margin-bottom: 10px; /* Add spacing between paragraphs */
 }
