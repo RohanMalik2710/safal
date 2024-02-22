@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
 import Home from './Home'; // Import Home component
 import './Home'; // This import doesn't seem necessary
-
 const Footer = () => {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
@@ -19,6 +18,19 @@ const Footer = () => {
   };
 
   // Define onClick functions to scroll to respective sections in Home component
+  const handleServicesLinkClick = () => {
+    scrollToSection('serve-sections'); // Corrected to 'serve-sections'
+  };
+
+  const   handleAboutLinkClick= () => {
+    scrollToSection('about-us'); // Corrected to 'serve-sections'
+  };
+
+
+  const handleHomeLinkClick = () => {
+    scrollToSection('home-container'); // Corrected to 'serve-sections'
+  };
+
   const handleTeamLinkClick = () => {
     scrollToSection('team');
   };
@@ -39,20 +51,17 @@ const Footer = () => {
         </div>
         <div className="footer-links">
           <div className="section">
-            <h3>Know More</h3>
-            <p>Information</p>
-            <p>Services</p>
+          <a href="/" onClick={handleHomeLinkClick}>Home</a><br></br>
+            <a href="#serve-sections" onClick={handleServicesLinkClick}>Services</a> {/* Corrected function call */}
           </div>
           <div className="section">
-            <h3>About</h3>
-            <p>Company</p>
-            <a href="#team" onClick={handleTeamLinkClick}>Team</a>
-            <a href="#mission" onClick={handleMissionLinkClick}>Mission</a>
+          <a href="#about-us" onClick={handleAboutLinkClick}>About Us</a><br></br>
+            <a href="#team" onClick={handleTeamLinkClick}>Our Team</a><br></br>
+            <a href="#mission" onClick={handleMissionLinkClick}>Our Mission</a>
           </div>
           <div className="section">
             <Link to="/FeedbackForm">Feedback</Link>
             <p>Contact Us</p>
-            <p>Support</p>
           </div>
         </div>
       </div>

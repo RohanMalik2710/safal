@@ -3,27 +3,29 @@
 .footer {
   background-color: #333; /* Set background color */
   color: #fff; /* Set text color */
-  padding: 20px 20px; /* Adjust padding */
+  padding: 5px  20px ; /* Adjust padding */
   text-align: center; /* Align text to the center */
   margin-top: 70px; /* Adjust margin */
 }
-
-
 .footer-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 30px; /* Add 20 pixels of padding to the left and right sides */
 }
+
 .footer-image img {
   width: auto; /* Set image width */
   height: 100px; /* Maintain aspect ratio */
+  margin-top:20px ;
   margin-left: 20px; /* Adjust margin to position image slightly to the right */
 }
-
 .footer-links {
+  margin-top: 20px;
   margin-right: 20px;
   display: flex;
-  gap: 20px;
+  gap: 30px;
+  flex-wrap: wrap; /* Allow flex items to wrap to the next line */
 }
 
 .section {
@@ -37,7 +39,6 @@
 .section p {
   margin: 5px 0;
 }
-/* Footer.css */
 
 .social-icons {
   display: flex; /* Use flexbox layout */
