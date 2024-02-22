@@ -60,6 +60,9 @@ const App = () => {
               <Link to="/employer" className="nav-link">Employer</Link>
             </li>
             <li className="nav-item">
+              <div id="google_translate_element"></div>
+            </li>
+            <li className="nav-item">
               <Link to="/signup" className="nav-link">Signup</Link>
             </li>
             <li className="nav-item">
