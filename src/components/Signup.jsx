@@ -15,9 +15,14 @@ const Signup = () => {
     userType: '',
   });
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const handleInputChange = (e) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+  const handleTogglePassword = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleSignup = async (e) => {
@@ -170,15 +175,24 @@ const Signup = () => {
             <label htmlFor="password" className="block text-sm font-medium text-gray-600">
               Password
             </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              required
-              className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
-              onChange={handleInputChange}
-            />
+             <div className="relative">
+              <input
+                id="password"
+                name="password"
+                type={showPassword ? "text" : "password"}
+                autoComplete="current-password"
+                required
+                className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                onChange={handleInputChange}
+              />
+              <button
+                type="button"
+                className="absolute inset-y-0 right-0 px-2 py-1"
+                onClick={handleTogglePassword}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
           </div>
           <div>
             <button
