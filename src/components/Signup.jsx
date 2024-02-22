@@ -61,9 +61,12 @@ const Signup = () => {
       });
 
       const userDetails = {
-        name: userData.name,
+        aadhar: userData.aadhar,
         email: userData.email,
-        // Add other details as needed
+        name: userData.name,
+        phone: userData.phone,
+        userType: userData.userType,
+        uid: user.uid,
       };
 
       // Save user details to Firestore
