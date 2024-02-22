@@ -3,41 +3,41 @@
 .footer {
   background-color: #333; /* Set background color */
   color: #fff; /* Set text color */
-  padding: 1px 20px; /* Adjust padding */
+  padding: 20px 20px; /* Adjust padding */
   text-align: center; /* Align text to the center */
-  margin-top: 30px; /* Adjust margin */
+  margin-top: 70px; /* Adjust margin */
 }
 
+
 .footer-content {
-  padding-left: 50px;
-  padding-right: 50px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .footer-image img {
   width: auto; /* Set image width */
-  height: 80px; /* Maintain aspect ratio */
-  margin-left: 120px;
-  margin-top: 30px;
+  height: 100px; /* Maintain aspect ratio */
+  margin-left: 20px; /* Adjust margin to position image slightly to the right */
 }
 
 .footer-links {
-  padding-top: 30px;
-  padding-right: 80px;
+  margin-right: 20px;
   display: flex;
-  gap: 80px;
+  gap: 20px;
+}
+
+.section {
+  flex: 1; /* Each section takes equal space */
 }
 
 .section h3 {
-  margin: 10px;
-  font-size:18px;
+  margin-bottom: 10px;
 }
 
 .section p {
   margin: 5px 0;
 }
+/* Footer.css */
 
 .social-icons {
   display: flex; /* Use flexbox layout */
@@ -47,10 +47,5 @@
 
 .social-icons a {
   margin: 0 10px; /* Add spacing between the icons */
-  font-size: 50px; /* Adjust the icon size */
-}
-
-.rights{
-  padding-right: 15px;
-  padding-bottom: 10px;
+  font-size: 36px; /* Adjust the icon size */
 }
