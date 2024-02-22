@@ -76,7 +76,7 @@ const Home = () => {
             <p>Varun Pratap</p>
           </div>
           <div class="team-member">
-            <a target='_blank' href="https://www.linkedin.com/in/varun-pratap-singh-1aa3732b6/">
+            <a target='_blank' href="https://www.linkedin.com/in/arshia-gupta-4a3b75294/">
               <img src="src/assets/slider4.jpg" alt="Arshia Gupta" />
             </a>
             <p>Arshia Gupta</p>

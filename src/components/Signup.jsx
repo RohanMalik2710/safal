@@ -153,6 +153,7 @@ const Signup = () => {
               name="phone"
               type="tel"
               autoComplete="tel"
+              placeholder='+91'
               required
               className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-300"
               onChange={handleInputChange}
