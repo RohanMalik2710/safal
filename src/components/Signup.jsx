@@ -85,7 +85,7 @@ const Signup = () => {
 
       // Redirect or perform other actions upon successful signup
     } catch (error) {
-      if (error.code === 'auth/email-already-in-use') {
+      if (error.message === 'auth/email-already-in-use') {
         setError('Email already in use');
         // Display your custom error message to the user
       } else {
@@ -93,6 +93,18 @@ const Signup = () => {
         // Handle other signup errors
       }
     }
+  };
+
+  const Logout = () => {
+    const handleLogout = async () => {
+      try {
+        await signOut(auth);
+        // Successfully logged out, you can redirect or perform other actions here
+      } catch (error) {
+        console.error('Logout failed:', error.message);
+        // Handle logout error
+      }
+    };
   };
 
   return (

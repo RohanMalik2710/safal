@@ -9,9 +9,7 @@ import DarkModeToggle from './components/DarkModeToggle';
 import EmployerSkillPage from './components/EmployerSkillPage';
 import Footer from './components/Footer';
 import companyLogo from './assets/safal-logo.png';
-import Logout from './components/Logout';
 import { onAuthStateChanged, signOut } from 'firebase/auth';  // Import onAuthStateChanged and signOut from Firebase
-
 import { doc, getDoc } from 'firebase/firestore';
 
 // Import Firebase database and auth functions
@@ -93,21 +91,18 @@ const App = () => {
                 <Link to="/login" className="nav-link">Login</Link>
             </li>
             <li className="nav-item">
-                <Link to="/signup" className="nav-link">Signup</Link>
-            </li>
-            <li className="nav-item">
               <div id="google_translate_element"></div>
             </li>
             <div className="user-details">
             {user && userData && (
-              <div className="user-info relative flex flex-row -ml-20" onClick={handleDropdownToggle}>
+              <div className="user-info relative flex flex-row -mr-14" onClick={handleDropdownToggle}>
                 {/* Initially display only profile picture username in the navbar */}
                 <img src={profilePicture} alt="Profile" className="h-8 mt-1 mr-4 cursor-pointer" />
                 {userData.name && <span className="text-white font-semibold mt-2 cursor-pointer">{userData.name}</span>}
 
                 {/* Dropdown with additional user details */}
                 {isDropdownOpen && (
-                  <div className="dropdown absolute top-10 right-0 bg-white border rounded p-2">
+                  <div className="dropdown absolute top-10 right-0 bg-white border rounded p-2 z-20">
                     {/* Display all user details in the dropdown */}
                     <div>
                       <strong>Name:</strong> {userData.name}
@@ -123,6 +118,9 @@ const App = () => {
                     </div>
                     <div>
                       <strong>User Type:</strong> {userData.userType}
+                    </div>
+                    <div>
+                      <button onClick={handleLogout} className="logout-button">Logout</button>
                     </div>
                   </div>
                 )}

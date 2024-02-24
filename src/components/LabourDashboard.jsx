@@ -1,13 +1,16 @@
+//LabourDashboard.jsx
 import React, { useState, useRef, useEffect } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { FaSearch } from 'react-icons/fa'; // Import the search icon
 import LabourSlider from './LabourSlider';
 import DarkModeToggle from './DarkModeToggle';
+import LoginDialog from './LoginDialog'; // Import the LoginDialog component
 import '../styles/Labour.css';
 import '../styles/Form.css';
 
 import { collection, query, where, getDocs } from "firebase/firestore";
-import { db } from "../firebase.config";
+import { db,auth } from "../firebase.config";
+import { onAuthStateChanged } from 'firebase/auth';
 
 const LabourDashboard = () => {
   const [count, setCount] = useState(0);
@@ -20,6 +23,14 @@ const LabourDashboard = () => {
   const [searchResult, setSearchResult] = useState([]);
   const [showLoading, setShowLoading] = useState(false);
   const [showCancelSearch, setShowCancelSearch] = useState(false);
+  const [user, setUser] = useState(null); // Local state to store user information
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -79,8 +90,12 @@ const LabourDashboard = () => {
   };
 
   const handleApply = (postId) => {
-    setShowApplyForm(postId);
-    setSelectedJob(postId);
+    if (!user) {
+      setShowLoginDialog(true);
+    } else {
+      setShowApplyForm(postId);
+      setSelectedJob(postId);
+    }
   };
 
   const handleFormClose = () => {
@@ -177,7 +192,9 @@ const LabourDashboard = () => {
             <span className="close-button" onClick={handleFormClose}>&times;</span>
             <div className='job-application-form-top-bar'>
               <img className='back-arrow-image' src="src/assets/back-arrow.png" alt="back" onClick={handleFormClose} />
-              <h2 className='job-application-form-title'>Apply to {jobPostings.find(job => job.id === selectedJob)?.company}</h2>
+              <div className='title-bar'>
+                <h2 className='job-application-form-title'>Apply to {jobPostings.find(job => job.id === selectedJob)?.company}</h2>
+              </div>
             </div>
             <label>Email:</label>
             <input type="email" />

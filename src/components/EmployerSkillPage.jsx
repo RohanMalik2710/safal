@@ -1,15 +1,32 @@
 // EmployerSkillPage.jsx
-import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams} from 'react-router-dom';
 import JobPostingForm from './JobPostingForm';
+import LoginDialog from './LoginDialog'; // Import the LoginDialog component
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase.config';
 
 const EmployerSkillPage = () => {
-  const {skill} =useParams();
+  const { skill } = useParams();
 
   const [showJobForm, setShowJobForm] = useState(false);
+  const [showLoginDialog, setShowLoginDialog] = useState(false); // State to control the visibility of the login dialog
+  const [user, setUser] = useState(null); // Local state to store user information
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handlePostJobClick = () => {
-    setShowJobForm(true);
+    // Check if the user is logged in
+    if (!user) {
+      setShowLoginDialog(true);
+    } else {
+      setShowJobForm(true);
+    }
   };
 
   const handleJobFormClose = () => {
@@ -32,6 +49,9 @@ const EmployerSkillPage = () => {
 
       {/* Display Job Posting Form when showJobForm is true */}
       {showJobForm && <JobPostingForm onClose={handleJobFormClose} skill={skill} />}
+
+      {/* Display LoginDialog when showLoginDialog is true */}
+      {showLoginDialog && <LoginDialog onClose={() => setShowLoginDialog(false)} />}
     </div>
   );
 };

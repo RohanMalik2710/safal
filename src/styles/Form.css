@@ -27,6 +27,12 @@
     margin-bottom: 10px;
   }
 
+  .title-bar {
+    margin-left: -8%;
+    width: 100%;
+    justify-content: center;
+  }
+
   .back-arrow-image {
     margin-top: 10px;
     height: 40px;
@@ -36,7 +42,6 @@
     font-size: xx-large;
     font-weight: 100;
     margin-top: 10px;
-    margin-left: 110px;
   }
   
   .job-application-form h2 {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { collection, getDoc, doc } from 'firebase/firestore';
+import { collection, getDoc, doc, setDoc } from 'firebase/firestore';
 import { db, auth } from '../firebase.config';
 
 const Login = () => {
@@ -18,35 +18,48 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
       // Log in the user
-      const { user } = await signInWithEmailAndPassword(auth, loginData.email, loginData.password);
-
+      const { user } = await signInWithEmailAndPassword(auth, credentials.email, credentials.password);
+  
       // Check if user exists in the "users" collection
-      const userDoc = await getDoc(doc(db, 'users', user.uid));
-
-      const userDetails = {
-        name: loginData.name,
-        email: loginData.email,
-        // Add other details as needed
-      };
-
-      if (userDoc.exists()) {
-        
+      const userDataRef = doc(db, 'users', user.uid);
+      const userDataSnap = await getDoc(userDataRef);
+  
+      if (userDataSnap.exists()) {
+        // User exists in the database
+        const userData = userDataSnap.data();
+  
         // Redirect or perform other actions upon successful login
+        const userDetails = {
+          aadhar: userData.aadhar,
+          email: userData.email,
+          name: userData.name,
+          phone: userData.phone,
+          userType: userData.userType,
+          uid: user.uid,
+        };
+  
+        // Save user details to Firestore
+        await setDoc(userDataRef, userDetails);
       } else {
         // User doesn't exist in the database
         setError('User not found');
         // Display your custom error message to the user
-
-      // Redirect or perform other actions upon successful login
-    } 
-    }catch (error) {
-      setError(error.message);
-      // Handle login error
+      }
+    } catch (error) {
+      if (error.code === 'auth/invalid-credential') {
+        setError('Invalid credential');
+        // Display your custom error message to the user
+      } else {
+        setError(error.message);
+        // Handle other login errors
+      }
     }
   };
+  
+  
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
