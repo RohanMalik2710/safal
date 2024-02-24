@@ -21,3 +21,16 @@ S.A.F.A.L isn't just a platform; it's a beacon of empowerment for unskilled labo
 2) **Accessibility**: Our user-friendly platform ensures that job searching is accessible to all, regardless of technological proficiency or background.
 
 3) **Dedication to Excellence**: We are dedicated to excellence in everything we do, continuously striving to improve and innovate to better serve the needs of our users.
+
+## Tech Stack Used:
+
+1) 
+
+2) 
+
+3)
+
+## License:
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
