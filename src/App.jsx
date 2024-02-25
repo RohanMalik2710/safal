@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import companyLogo from './assets/safal-logo.png';
 import { onAuthStateChanged, signOut } from 'firebase/auth';  // Import onAuthStateChanged and signOut from Firebase
 import { doc, getDoc } from 'firebase/firestore';
+import Interactions from './components/Interactions';
 
 // Import Firebase database and auth functions
 import { db,auth } from './firebase.config';
@@ -88,6 +89,9 @@ const App = () => {
               <Link to="/employer" className="nav-link">Employer</Link>
             </li>
             <li className="nav-item">
+              <Link to="/interactions" className="nav-link">Interactions</Link>
+            </li>
+            <li className="nav-item">
                 <Link to="/login" className="nav-link">Login</Link>
             </li>
             <li className="nav-item">
@@ -137,6 +141,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/labour" element={<LabourDashboard />} />
+        <Route path="/interactions" element={<Interactions />} />
         <Route path="/employer/*" element={<EmployerDashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
