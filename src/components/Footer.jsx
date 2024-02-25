@@ -1,11 +1,9 @@
 // Footer.jsx
-
 import React from 'react';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../styles/Footer.css';
 import Home from './Home'; // Import Home component
-import './Home'; // This import doesn't seem necessary
 const Footer = () => {
   const scrollToSection = (sectionId) => {
     const section = document.getElementById(sectionId);
@@ -60,8 +58,8 @@ const Footer = () => {
             <a href="#mission" onClick={handleMissionLinkClick}>Our Mission</a>
           </div>
           <div className="section">
-            <Link to="/FeedbackForm">Feedback</Link>
-            <p>Contact Us</p>
+            <Link to="/feedback">Feedback</Link>
+            <p className="text-white">Contact Us</p>
           </div>
         </div>
       </div>

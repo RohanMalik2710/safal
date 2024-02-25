@@ -15,6 +15,7 @@ import { db, auth } from './firebase.config';
 import profilePicture from './assets/profile-picture.png';
 import Interactions from './components/Interactions';
 import Upskill from './components/Upskill';
+import Feedback from'./components/Feedback';
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -167,6 +168,7 @@ const App = () => {
         <Route path="/employer/:skill/*" element={<EmployerSkillPage />} />
         <Route path="/upskill" element={<Upskill/>} />
         <Route path="/interactions" element={<Interactions/>} />
+        <Route path="/feedback" element={<Feedback/>} />
       </Routes>
 
       <Footer></Footer>

@@ -84,9 +84,6 @@ const Home = () => {
         </div>
         <div className="about-us" id="about-us">
         <h2 id="content-title">ABOUT US</h2>
-        <div className="about-us-image">
-            <img src="src/assets/aboutus.png" alt="About Us" />
-          </div>
           <div className="about-us-content">
             <p>We are students of PEC (Punjab Engineering College), Chandigarh, passionate about creating a common platform for both employers and laborers to connect effectively.</p>
             <p>Our aim is to bridge the gap between job seekers and employers by providing a user-friendly and efficient platform that caters to the needs of both parties.</p>
