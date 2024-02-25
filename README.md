@@ -24,11 +24,15 @@ S.A.F.A.L isn't just a platform; it's a beacon of empowerment for unskilled labo
 
 ## Tech Stack Used:
 
-1) 
+1) HTML
 
-2) 
+2) CSS(Tailwind CSS)
 
-3)
+3)JavaScript
+
+4)Vite+Reactjs
+
+5)Firebase
 
 ## License:
 This project is licensed under the MIT License - see the LICENSE file for details.
