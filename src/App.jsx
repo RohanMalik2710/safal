@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import companyLogo from './assets/safal-logo.png';
 import { onAuthStateChanged, signOut } from 'firebase/auth';  // Import onAuthStateChanged and signOut from Firebase
 import { doc, getDoc } from 'firebase/firestore';
+import Upskill from './components/Upskill';
 
 // Import Firebase database and auth functions
 import { db,auth } from './firebase.config';
