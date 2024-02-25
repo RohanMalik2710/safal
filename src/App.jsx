@@ -88,6 +88,9 @@ const App = () => {
               <Link to="/employer" className="nav-link">Employer</Link>
             </li>
             <li className="nav-item">
+              <Link to="/upskill" className="nav-link">Upskill</Link>
+            </li>
+            <li className="nav-item">
                 <Link to="/login" className="nav-link">Login</Link>
             </li>
             <li className="nav-item">
@@ -137,6 +140,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/labour" element={<LabourDashboard />} />
+        <Route path="/upskill" element={<Upskill />} />
         <Route path="/employer/*" element={<EmployerDashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
